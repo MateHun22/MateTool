@@ -8,16 +8,29 @@
     <p>Processing OAuth2 callback...</p>
 
     <script>
-        // Parse the query string to extract the access token and other parameters.
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const accessToken = urlParams.get("access_token");
 
-        // You can use the access token to make API requests to Discord.
-        console.log("Access Token:", accessToken);
+        // Fetch user data from Discord API
+        fetch("https://discord.com/api/users/@me", {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${accessToken}`,
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display user's name in a label
+            const nameLabel = document.createElement("label");
+            nameLabel.textContent = `Welcome, ${data.username}#${data.discriminator}`;
+            document.body.appendChild(nameLabel);
 
-        // You can also perform other actions or redirect the user as needed.
-        // For example, you can close the window or redirect to a success page.
+            // Display the user's profile picture
+            const profilePic = document.createElement("img");
+            profilePic.src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+            document.body.appendChild(profilePic);
+        });
     </script>
 </body>
 </html>
