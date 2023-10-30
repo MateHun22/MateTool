@@ -1,1 +1,23 @@
-<h1>Hi<h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OAuth2 Callback</title>
+</head>
+<body>
+    <h1>OAuth2 Callback</h1>
+    <p>Processing OAuth2 callback...</p>
+
+    <script>
+        // Parse the query string to extract the access token and other parameters.
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const accessToken = urlParams.get("access_token");
+
+        // You can use the access token to make API requests to Discord.
+        console.log("Access Token:", accessToken);
+
+        // You can also perform other actions or redirect the user as needed.
+        // For example, you can close the window or redirect to a success page.
+    </script>
+</body>
+</html>
