@@ -25,11 +25,6 @@
             const nameLabel = document.createElement("label");
             nameLabel.textContent = `Welcome, ${data.username}#${data.discriminator}`;
             document.body.appendChild(nameLabel);
-
-            // Display the user's profile picture
-            const profilePic = document.createElement("img");
-            profilePic.src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
-            document.body.appendChild(profilePic);
         });
     </script>
 </body>
